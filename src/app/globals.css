@@ -1,8 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000000;
+  --background: #0a0a0a;
   --foreground: #ffffff;
+  --jt-dark: #1a1a1a;
+  --jt-darker: #0f0f0f;
+  --jt-purple: #8b5cf6;
+  --jt-purple-light: #a78bfa;
+  --jt-purple-dark: #7c3aed;
+  --jt-red: #ef4444;
+  --jt-red-light: #f87171;
+  --jt-blue: #3b82f6;
+  --jt-blue-light: #60a5fa;
+  --jt-gray: #374151;
+  --jt-gray-light: #6b7280;
+  --jt-green: #10b981;
 }
 
 @theme inline {
@@ -31,16 +43,16 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1a1a1a;
+  background: var(--jt-darker);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(45deg, #ec4899, #ef4444);
+  background: linear-gradient(45deg, var(--jt-purple), var(--jt-purple-dark));
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(45deg, #db2777, #dc2626);
+  background: linear-gradient(45deg, var(--jt-purple-light), var(--jt-purple));
 }
 
 /* Enhance animation performance */
@@ -116,10 +128,10 @@ html {
 
 @keyframes glow {
   0%, 100% {
-    box-shadow: 0 0 20px rgba(236, 72, 153, 0.3);
+    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
   }
   50% {
-    box-shadow: 0 0 40px rgba(236, 72, 153, 0.6), 0 0 60px rgba(236, 72, 153, 0.4);
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.6), 0 0 60px rgba(139, 92, 246, 0.4);
   }
 }
 

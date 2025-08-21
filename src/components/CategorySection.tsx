@@ -38,9 +38,15 @@ export default function CategorySection({
       <div className={`relative z-10 text-center px-4 max-w-4xl ${isVisible ? 'flow-in' : 'opacity-0'}`}>
         <div className={`mb-8 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.4s' }}>
           {/* Video Placeholder */}
-          <div className="relative w-80 h-60 mx-auto bg-gradient-to-br from-pink-600 to-purple-600 rounded-lg overflow-hidden shadow-2xl shadow-pink-500/30 glow-effect">
-            <div className="absolute top-4 right-4 bg-red-600 text-sm px-3 py-1 rounded-full font-bold animate-pulse z-10">
-              LIVE NOW!
+          <div className="relative w-80 h-60 mx-auto rounded-lg overflow-hidden shadow-2xl glow-effect" style={{
+            background: 'linear-gradient(to bottom right, var(--jt-purple), var(--jt-purple-dark))',
+            boxShadow: '0 20px 60px rgba(139, 92, 246, 0.3)'
+          }}>
+            <div className="absolute top-4 right-4 text-sm px-3 py-1 rounded-full font-bold animate-pulse z-10" style={{
+              backgroundColor: 'var(--jt-red)',
+              color: 'white'
+            }}>
+              LIVE
             </div>
             <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
               <div className="text-6xl animate-bounce">{emoji}</div>
