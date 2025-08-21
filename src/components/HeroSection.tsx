@@ -11,11 +11,18 @@ export default function HeroSection({ onScrollToStep }: HeroSectionProps) {
     <section 
       ref={ref as React.RefObject<HTMLElement>} 
       id="step-0" 
-      className="min-h-screen relative flex items-center justify-center"
+      className="h-screen w-full relative flex items-center justify-center"
+      style={{
+        backgroundColor: 'var(--jt-darker)',
+        background: 'linear-gradient(to bottom, var(--jt-darker), var(--jt-dark))'
+      }}
     >
       {/* Background Video Placeholder */}
-      <div className="absolute inset-0 bg-gradient-to-b from-purple-900 to-gray-900" style={{backgroundColor: 'var(--jt-darker)'}}>
-        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+      <div className="absolute inset-0" style={{
+        backgroundColor: 'var(--jt-darker)',
+        background: 'linear-gradient(to bottom, var(--jt-darker), var(--jt-dark))'
+      }}>
+        <div className="absolute inset-0 bg-black bg-opacity-80"></div>
         {/* Simulated Video Feed */}
         <div className="absolute inset-0 grid grid-cols-2 gap-2 p-4 opacity-25">
           {[...Array(8)].map((_, i) => (
@@ -34,32 +41,31 @@ export default function HeroSection({ onScrollToStep }: HeroSectionProps) {
 
       {/* Content */}
       <div className={`relative z-10 text-center px-4 max-w-4xl ${isVisible ? 'flow-in' : 'opacity-0'}`}>
-        <h1 className={`text-6xl md:text-8xl font-bold mb-4 text-transparent bg-clip-text glow-effect ${isVisible ? 'scale-in' : 'opacity-0'}`} 
+        <h1 className={`text-6xl md:text-8xl font-bold mb-4 text-transparent bg-clip-text ${isVisible ? 'scale-in' : 'opacity-0'}`} 
             style={{ 
               animationDelay: '0.3s',
               backgroundImage: 'linear-gradient(to right, var(--jt-purple-light), var(--jt-red))'
             }}>
-          JT
+          JerkTok.me
         </h1>
         <h2 className={`text-2xl md:text-4xl font-bold mb-4 ${isVisible ? 'slide-in-left' : 'opacity-0'}`}
             style={{ 
               animationDelay: '0.6s',
               color: 'var(--jt-purple-light)'
             }}>
-          {'{Nickname}, your feed is getting hot again!'}
+          Your feed is getting hot again!
         </h2>
         <p className={`text-lg md:text-xl mb-8 max-w-3xl mx-auto ${isVisible ? 'slide-in-right' : 'opacity-0'}`}
            style={{ 
              animationDelay: '0.9s',
              color: 'var(--jt-gray-light)'
            }}>
-          You've been away, but the action hasn't stopped. New live shows, trending tags, and your favorite models are just a click away - ready for you to jump back in.
+          You&apos;ve been away, but the action hasn&apos;t stopped. New live shows, trending tags, and your favorite models are just a click away - ready for you to jump back in.
         </p>
         <button
           onClick={() => onScrollToStep(1)}
-          className={`text-white font-bold py-4 px-8 rounded-full text-xl shadow-lg button-hover-effect transition-all duration-300 hover:scale-105 ${isVisible ? 'scale-in' : 'opacity-0'}`}
+          className={`text-white font-bold py-4 px-8 rounded-full text-xl shadow-lg animate-pulse button-hover-effect transition-all duration-300 hover:scale-105 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
           style={{ 
-            animationDelay: '1.2s',
             background: 'linear-gradient(to right, var(--jt-purple), var(--jt-purple-dark))',
             boxShadow: '0 4px 20px rgba(139, 92, 246, 0.5)'
           }}

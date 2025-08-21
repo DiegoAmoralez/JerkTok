@@ -9,6 +9,7 @@ interface CategorySectionProps {
   textColor: string;
   buttonGradient: string;
   emoji: string;
+  videoUrl?: string; // URL для видео
   isAdded: boolean;
   onAddToFeed: (itemId: string) => void;
   onScrollToNext: () => void;
@@ -23,6 +24,7 @@ export default function CategorySection({
   textColor,
   buttonGradient,
   emoji,
+  videoUrl,
   isAdded,
   onAddToFeed,
   onScrollToNext
@@ -33,47 +35,64 @@ export default function CategorySection({
     <section 
       ref={ref as React.RefObject<HTMLElement>}
       id={`step-${stepNumber}`} 
-      className={`min-h-screen relative flex items-center justify-center ${bgGradient}`}
+      className="h-screen w-full relative flex items-center justify-center"
+      style={{
+        backgroundColor: 'var(--jt-darker)',
+        background: 'linear-gradient(to bottom, var(--jt-darker), var(--jt-dark))',
+        position: 'relative',
+        zIndex: 10
+      }}
     >
-      <div className={`relative z-10 text-center px-4 max-w-4xl ${isVisible ? 'flow-in' : 'opacity-0'}`}>
-        <div className={`mb-8 ${isVisible ? 'scale-in' : 'opacity-0'}`} style={{ animationDelay: '0.4s' }}>
-          {/* Video Placeholder */}
-          <div className="relative w-80 h-60 mx-auto rounded-lg overflow-hidden shadow-2xl glow-effect" style={{
-            background: 'linear-gradient(to bottom right, var(--jt-purple), var(--jt-purple-dark))',
+      {/* Additional background protection */}
+      <div className="absolute inset-0 bg-black bg-opacity-90" style={{zIndex: 1}}></div>
+      <div className={`relative z-20 text-center px-4 max-w-4xl ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`mb-8 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ animationDelay: '0.4s' }}>
+          {/* Vertical Video Player */}
+          <div className="relative w-80 h-96 mx-auto rounded-lg overflow-hidden shadow-2xl" style={{
             boxShadow: '0 20px 60px rgba(139, 92, 246, 0.3)'
           }}>
+            <video
+              className="w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+            >
+              <source src={videoUrl} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            
+            {/* LIVE indicator */}
             <div className="absolute top-4 right-4 text-sm px-3 py-1 rounded-full font-bold animate-pulse z-10" style={{
               backgroundColor: 'var(--jt-red)',
               color: 'white'
             }}>
               LIVE
             </div>
-            <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
-              <div className="text-6xl animate-bounce">{emoji}</div>
-            </div>
-            {/* Simulated video effect */}
-            <div className="absolute inset-0 bg-gradient-to-t from-transparent via-pink-500/20 to-transparent animate-pulse"></div>
+            
+            {/* Video overlay effect */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent"></div>
           </div>
         </div>
         
-        <h2 className={`text-4xl md:text-6xl font-bold mb-4 ${textColor} ${isVisible ? 'slide-in-left' : 'opacity-0'}`}
+        <h2 className={`text-4xl md:text-6xl font-bold mb-4 ${textColor} ${isVisible ? 'opacity-100' : 'opacity-0'}`}
             style={{ animationDelay: '0.7s' }}>
           {title}
         </h2>
-        <p className={`text-xl md:text-2xl mb-8 text-gray-300 ${isVisible ? 'slide-in-right' : 'opacity-0'}`}
+        <p className={`text-xl md:text-2xl mb-8 text-gray-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
            style={{ animationDelay: '1s' }}>
           {description}
         </p>
         
-        <div className={`space-y-4 md:space-y-0 md:space-x-6 md:flex md:justify-center ${isVisible ? 'fade-in-up' : 'opacity-0'}`}
+        <div className={`space-y-4 md:space-y-0 md:space-x-6 md:flex md:justify-center ${isVisible ? 'opacity-100' : 'opacity-0'}`}
              style={{ animationDelay: '1.3s' }}>
           <button
             onClick={() => onAddToFeed(id)}
             data-item-id={id}
             className={`px-8 py-4 rounded-full font-bold text-lg button-hover-effect transition-all duration-300 ${
               isAdded
-                ? 'bg-green-600 text-white scale-in'
-                : `${buttonGradient} text-white hover:scale-105`
+                ? 'bg-green-600 text-white'
+                : `${buttonGradient} text-white hover:scale-105 animate-pulse`
             }`}
             disabled={isAdded}
           >

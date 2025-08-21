@@ -3,8 +3,15 @@ import { useEffect, useRef, useState } from 'react';
 export const useScrollAnimation = (threshold = 0.1) => {
   const ref = useRef<HTMLElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isMounted || typeof window === 'undefined') return;
+    
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -27,7 +34,7 @@ export const useScrollAnimation = (threshold = 0.1) => {
         observer.unobserve(currentRef);
       }
     };
-  }, [threshold]);
+  }, [threshold, isMounted]);
 
   return { ref, isVisible };
 };
