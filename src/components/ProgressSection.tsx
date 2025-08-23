@@ -38,8 +38,8 @@ export default function ProgressSection({ progressSteps, onScrollToNext }: Progr
         background: 'linear-gradient(to bottom, var(--jt-darker), var(--jt-dark))'
       }}
     >
-      <div className={`relative z-10 text-center px-4 max-w-4xl ${isVisible ? 'flow-in' : 'opacity-0'}`}>
-        <div className="flex flex-col transition-all duration-1000 ease-out" style={{
+      <div className={`relative z-10 text-center px-4 max-w-4xl -mt-42 md:-mt-32 ${isVisible ? 'flow-in' : 'opacity-0'}`}>
+        <div className="flex flex-col transition-all duration-1000 ease-out space-y-6 md:space-y-0" style={{
           gap: allCompleted ? '2rem' : '1.5rem'
         }}>
           {progressSteps.map((step, index) => (
@@ -79,10 +79,25 @@ export default function ProgressSection({ progressSteps, onScrollToNext }: Progr
               <div className={`transition-all duration-700 ease-out overflow-hidden ${
                 step.completed ? 'max-h-16 opacity-100 mt-2' : 'max-h-0 opacity-0 mt-0'
               }`}>
-                <div className="font-bold" style={{color: 'var(--jt-green)'}}>
-                  {index === 0 && "10 claps to extend your watch time! 👏"}
-                  {index === 1 && "2 pips earned! 💎"}
-                  {index === 2 && "You still have claps/pips to extend! ⏰"}
+                <div className="font-bold flex items-center justify-center gap-2" style={{color: 'var(--jt-green)'}}>
+                  {index === 0 && (
+                    <>
+                      <span>10 claps to extend your watch time!</span>
+                      <img src="/claps2.png" alt="claps" className="w-6 h-6" />
+                    </>
+                  )}
+                  {index === 1 && (
+                    <>
+                      <span>2 pips earned!</span>
+                      <img src="/pips.png" alt="pips" className="w-6 h-6" />
+                    </>
+                  )}
+                  {index === 2 && (
+                    <>
+                      <span>You still have claps/pips to extend!</span>
+                      <img src="/JT.png" alt="JT" className="w-6 h-6" />
+                    </>
+                  )}
                 </div>
               </div>
             </div>
@@ -91,10 +106,11 @@ export default function ProgressSection({ progressSteps, onScrollToNext }: Progr
           {allCompleted && showButton && (
             <button
               onClick={onScrollToNext}
-              className={`mt-8 text-white font-bold py-4 px-8 rounded-full text-xl shadow-lg animate-pulse button-hover-effect glow-effect transition-all duration-300 hover:scale-105 slide-in-from-bottom`}
+              className={`mt-8 text-white font-bold py-4 px-8 rounded-full text-xl shadow-lg animate-pulse button-hover-effect glow-effect transition-all duration-500 hover:scale-105`}
               style={{ 
                 background: 'linear-gradient(to right, var(--jt-purple), var(--jt-purple-dark))',
-                boxShadow: '0 4px 20px rgba(139, 92, 246, 0.5)'
+                boxShadow: '0 4px 20px rgba(139, 92, 246, 0.5)',
+                animation: 'slideInFromBottom 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards'
               }}
             >
               Engage now! 🔥

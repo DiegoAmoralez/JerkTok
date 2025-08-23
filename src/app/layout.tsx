@@ -13,7 +13,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "JT - Your feed is getting hot again!",
+  title: "JerkTok - Your feed is getting hot again!",
   description: "You've been away, but the action hasn't stopped. New live shows, trending tags, and your favorite models are just a click away.",
 };
 

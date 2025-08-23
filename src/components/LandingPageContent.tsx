@@ -86,7 +86,7 @@ export default function LandingPageContent() {
       textColor: 'text-pink-300',
       buttonGradient: 'bg-gradient-to-r from-pink-600 to-red-600 hover:from-pink-700 hover:to-red-700',
       emoji: '🔥',
-      videoUrl: '/videos/LIVE NOW F1 V.mp4' // Путь к видео
+      videoUrl: '/videos/Step 2_1 (1).mp4' // Путь к видео
     },
     {
       id: 'public',
@@ -96,7 +96,7 @@ export default function LandingPageContent() {
       textColor: 'text-green-300',
       buttonGradient: 'bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700',
       emoji: '💦',
-      videoUrl: '/videos/LIVE NOW F1 V.mp4' // Видео добавлено
+      videoUrl: '/videos/Step 1_1 (1).mp4' // Видео добавлено
     },
     {
       id: 'deepthroat',
@@ -106,7 +106,7 @@ export default function LandingPageContent() {
       textColor: 'text-yellow-300',
       buttonGradient: 'bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-yellow-700 hover:to-orange-700',
       emoji: '👄',
-      videoUrl: '/videos/LIVE NOW F1 V.mp4' // Видео добавлено
+      videoUrl: '/videos/Step3_1 (1).mp4' // Видео добавлено
     },
     {
       id: 'anal',
@@ -116,7 +116,7 @@ export default function LandingPageContent() {
       textColor: 'text-red-300',
       buttonGradient: 'bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700',
       emoji: '🍑',
-      videoUrl: '/videos/LIVE NOW F1 V.mp4' // Видео добавлено
+      videoUrl: '/videos/Step4_1 (1).mp4' // Видео добавлено
     },
   ];
 

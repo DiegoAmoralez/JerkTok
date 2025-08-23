@@ -40,7 +40,7 @@ export default function HeroSection({ onScrollToStep }: HeroSectionProps) {
       </div>
 
       {/* Content */}
-      <div className={`relative z-10 text-center px-4 max-w-4xl ${isVisible ? 'flow-in' : 'opacity-0'}`}>
+      <div className={`relative z-10 text-center px-4 max-w-4xl space-y-6 md:space-y-0 -mt-42 md:-mt-32 ${isVisible ? 'flow-in' : 'opacity-0'}`}>
         <h1 className={`text-6xl md:text-8xl font-bold mb-4 text-transparent bg-clip-text ${isVisible ? 'scale-in' : 'opacity-0'}`} 
             style={{ 
               animationDelay: '0.3s',
@@ -53,14 +53,16 @@ export default function HeroSection({ onScrollToStep }: HeroSectionProps) {
               animationDelay: '0.6s',
               color: 'var(--jt-purple-light)'
             }}>
-          Your feed is getting hot again!
+          Line Up Horny Whores Streaming LIVE & Feed Their Holes with Your Cum!
+
         </h2>
         <p className={`text-lg md:text-xl mb-8 max-w-3xl mx-auto ${isVisible ? 'slide-in-right' : 'opacity-0'}`}
            style={{ 
              animationDelay: '0.9s',
              color: 'var(--jt-gray-light)'
            }}>
-          You&apos;ve been away, but the action hasn&apos;t stopped. New live shows, trending tags, and your favorite models are just a click away - ready for you to jump back in.
+          Build your feed of thousands of LIVE cam vixens and jerk to dripping pussies non-stop.
+
         </p>
         <button
           onClick={() => onScrollToStep(1)}
@@ -70,7 +72,7 @@ export default function HeroSection({ onScrollToStep }: HeroSectionProps) {
             boxShadow: '0 4px 20px rgba(139, 92, 246, 0.5)'
           }}
         >
-          Engage now!
+          Scroll to Start
         </button>
       </div>
     </section>

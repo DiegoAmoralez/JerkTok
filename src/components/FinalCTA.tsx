@@ -16,7 +16,7 @@ export default function FinalCTA({ addedItemsCount }: FinalCTAProps) {
         background: 'linear-gradient(to bottom, var(--jt-dark), var(--background))'
       }}
     >
-      <div className={`relative z-10 text-center px-4 max-w-4xl ${isVisible ? 'flow-in' : 'opacity-0'}`}>
+      <div className={`relative z-10 text-center px-4 max-w-4xl space-y-6 md:space-y-0 -mt-42 md:-mt-32 ${isVisible ? 'flow-in' : 'opacity-0'}`}>
         <h1 className={`text-4xl md:text-6xl font-bold mb-8 text-transparent bg-clip-text text-pulse ${isVisible ? 'scale-in' : 'opacity-0'}`}
             style={{ 
               animationDelay: '0.3s',
@@ -27,16 +27,22 @@ export default function FinalCTA({ addedItemsCount }: FinalCTAProps) {
         
         <div className={`mb-8 ${isVisible ? 'slide-in-left' : 'opacity-0'}`} style={{ animationDelay: '0.6s' }}>
           <div className="flex flex-wrap justify-center gap-6 text-xl mb-4">
-            <span className="px-5 py-3 rounded-full border button-hover-effect" style={{
+            <span className="px-5 py-3 rounded-full border button-hover-effect flex items-center gap-2" style={{
               backgroundColor: 'rgba(139, 92, 246, 0.2)',
               borderColor: 'var(--jt-purple)',
               color: 'var(--jt-purple-light)'
-            }}>👏 10 claps</span>
-            <span className="px-5 py-3 rounded-full border button-hover-effect" style={{
+            }}>
+              <img src="/claps2.png" alt="claps" className="w-5 h-5" />
+              10 claps
+            </span>
+            <span className="px-5 py-3 rounded-full border button-hover-effect flex items-center gap-2" style={{
               backgroundColor: 'rgba(16, 185, 129, 0.2)',
               borderColor: 'var(--jt-green)',
               color: 'var(--jt-green)'
-            }}>💎 2 pips</span>
+            }}>
+              <img src="/Pips.png" alt="pips" className="w-5 h-5" />
+              2 pips
+            </span>
           </div>
         </div>
         
@@ -51,7 +57,10 @@ export default function FinalCTA({ addedItemsCount }: FinalCTAProps) {
             boxShadow: '0 8px 40px rgba(139, 92, 246, 0.5)'
           }}
         >
-          Engage now! 🔥
+          <span className="flex items-center gap-3">
+            Engage now! 
+           
+          </span>
         </a>
         
         <p className={`mt-6 text-lg ${isVisible ? 'slide-in-right' : 'opacity-0'}`}

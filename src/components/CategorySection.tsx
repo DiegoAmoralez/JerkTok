@@ -45,8 +45,13 @@ export default function CategorySection({
     >
       {/* Additional background protection */}
       <div className="absolute inset-0 bg-black bg-opacity-90" style={{zIndex: 1}}></div>
-      <div className={`relative z-20 text-center px-4 max-w-4xl ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-        <div className={`mb-8 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ animationDelay: '0.4s' }}>
+      <div className={`relative z-20 text-center px-4 max-w-4xl -mt-42 md:-mt-32 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+        <h2 className={`text-4xl md:text-6xl font-bold mb-6 ${textColor} ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+            style={{ animationDelay: '0.4s' }}>
+          {title}
+        </h2>
+        
+        <div className={`mb-8 ${isVisible ? 'opacity-100' : 'opacity-0'}`} style={{ animationDelay: '0.7s' }}>
           {/* Vertical Video Player */}
           <div className="relative w-80 h-96 mx-auto rounded-lg overflow-hidden shadow-2xl" style={{
             boxShadow: '0 20px 60px rgba(139, 92, 246, 0.3)'
@@ -75,16 +80,12 @@ export default function CategorySection({
           </div>
         </div>
         
-        <h2 className={`text-4xl md:text-6xl font-bold mb-4 ${textColor} ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-            style={{ animationDelay: '0.7s' }}>
-          {title}
-        </h2>
         <p className={`text-xl md:text-2xl mb-8 text-gray-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
            style={{ animationDelay: '1s' }}>
           {description}
         </p>
         
-        <div className={`space-y-4 md:space-y-0 md:space-x-6 md:flex md:justify-center ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+        <div className={`flex flex-col space-y-4 md:flex-row md:space-y-0 md:space-x-6 md:justify-center ${isVisible ? 'opacity-100' : 'opacity-0'}`}
              style={{ animationDelay: '1.3s' }}>
           <button
             onClick={() => onAddToFeed(id)}
