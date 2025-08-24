@@ -3,7 +3,10 @@
 import { useState, useEffect } from 'react';
 import { useSmoothScroll } from '@/hooks/useScrollAnimation';
 import HeroSection from './HeroSection';
-import CategorySection from './CategorySection';
+import FuckMachineStep from './steps/FuckMachineStep';
+import PublicMasturbationStep from './steps/PublicMasturbationStep';
+import DeepthroatStep from './steps/DeepthroatStep';
+import AnalGapingStep from './steps/AnalGapingStep';
 import ProgressSection from './ProgressSection';
 import FinalCTA from './FinalCTA';
 
@@ -77,48 +80,7 @@ export default function LandingPageContent() {
     }
   }, [currentStep, progressSteps]);
 
-  const categories = [
-    {
-      id: 'fuckmachine',
-      title: 'Fuck Machine Sluts',
-      description: '1,457 Sluts Getting Pounded by Fuck Machines LIVE!',
-      bgGradient: 'bg-gradient-to-b from-purple-900 to-blue-900',
-      textColor: 'text-pink-300',
-      buttonGradient: 'bg-gradient-to-r from-pink-600 to-red-600 hover:from-pink-700 hover:to-red-700',
-      emoji: '🔥',
-      videoUrl: '/videos/Step 2_1 (1).mp4' // Путь к видео
-    },
-    {
-      id: 'public',
-      title: 'Public Masturbation Nymphos',
-      description: '2,547 Nymphos Rubbing Their Clits in Public LIVE!',
-      bgGradient: 'bg-gradient-to-b from-blue-900 to-green-900',
-      textColor: 'text-green-300',
-      buttonGradient: 'bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700',
-      emoji: '💦',
-      videoUrl: '/videos/Step 1_1 (1).mp4' // Видео добавлено
-    },
-    {
-      id: 'deepthroat',
-      title: 'Deepthroat Whores',
-      description: '4,500 Whores Gagging on Huge Dildos and Real Cocks LIVE!',
-      bgGradient: 'bg-gradient-to-b from-green-900 to-yellow-900',
-      textColor: 'text-yellow-300',
-      buttonGradient: 'bg-gradient-to-r from-yellow-600 to-orange-600 hover:from-yellow-700 hover:to-orange-700',
-      emoji: '👄',
-      videoUrl: '/videos/Step3_1 (1).mp4' // Видео добавлено
-    },
-    {
-      id: 'anal',
-      title: 'Anal Gaping',
-      description: '345 Girls Gaping Their Tight Assholes NOW!',
-      bgGradient: 'bg-gradient-to-b from-yellow-900 to-red-900',
-      textColor: 'text-red-300',
-      buttonGradient: 'bg-gradient-to-r from-red-600 to-pink-600 hover:from-red-700 hover:to-pink-700',
-      emoji: '🍑',
-      videoUrl: '/videos/Step4_1 (1).mp4' // Видео добавлено
-    },
-  ];
+  // Удаляем массив categories, так как теперь используем отдельные компоненты
 
   const addedItemsCount = feedItems.filter(item => item.added).length;
 
@@ -126,23 +88,33 @@ export default function LandingPageContent() {
     <div className="bg-black text-white overflow-x-hidden">
       <HeroSection onScrollToStep={handleScrollToStep} />
       
-      {categories.map((category, index) => (
-        <CategorySection
-          key={category.id}
-          id={category.id}
-          stepNumber={index + 1}
-          title={category.title}
-          description={category.description}
-          bgGradient={category.bgGradient}
-          textColor={category.textColor}
-          buttonGradient={category.buttonGradient}
-          emoji={category.emoji}
-          videoUrl={category.videoUrl}
-          isAdded={feedItems.find(item => item.id === category.id)?.added || false}
-          onAddToFeed={handleAddToFeed}
-          onScrollToNext={handleScrollToNext}
-        />
-      ))}
+      {/* Step 1: Fuck Machine Sluts */}
+      <FuckMachineStep
+        isAdded={feedItems.find(item => item.id === 'fuckmachine')?.added || false}
+        onAddToFeed={handleAddToFeed}
+        onScrollToNext={handleScrollToNext}
+      />
+      
+      {/* Step 2: Public Masturbation Nymphos */}
+      <PublicMasturbationStep
+        isAdded={feedItems.find(item => item.id === 'public')?.added || false}
+        onAddToFeed={handleAddToFeed}
+        onScrollToNext={handleScrollToNext}
+      />
+      
+      {/* Step 3: Deepthroat Whores */}
+      <DeepthroatStep
+        isAdded={feedItems.find(item => item.id === 'deepthroat')?.added || false}
+        onAddToFeed={handleAddToFeed}
+        onScrollToNext={handleScrollToNext}
+      />
+      
+      {/* Step 4: Anal Gaping */}
+      <AnalGapingStep
+        isAdded={feedItems.find(item => item.id === 'anal')?.added || false}
+        onAddToFeed={handleAddToFeed}
+        onScrollToNext={handleScrollToNext}
+      />
       
       <ProgressSection 
         progressSteps={progressSteps}

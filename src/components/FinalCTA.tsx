@@ -40,7 +40,7 @@ export default function FinalCTA({ addedItemsCount }: FinalCTAProps) {
               borderColor: 'var(--jt-green)',
               color: 'var(--jt-green)'
             }}>
-              <img src="/Pips.png" alt="pips" className="w-5 h-5" />
+              <img src="/pips.png" alt="pips" className="w-5 h-5" />
               2 pips
             </span>
           </div>

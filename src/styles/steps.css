@@ -1,0 +1,138 @@
+/* Individual step styling for custom sizing */
+
+/* Step 1: Fuck Machine Sluts */
+#step-1 {
+  /* Custom sizing for this specific step */
+}
+
+#step-1 h2 {
+  /* Custom title size for Step 1 */
+  font-size: clamp(2rem, 5vw, 4rem);
+}
+
+#step-1 .relative.w-80.h-96 {
+  /* Custom video size for Step 1 */
+  width: clamp(250px, 80vw, 320px);
+  height: clamp(300px, 60vh, 400px);
+}
+
+#step-1 p {
+  /* Custom description size for Step 1 */
+  font-size: clamp(1rem, 3vw, 1.5rem);
+}
+
+/* Step 2: Public Masturbation Nymphos */
+#step-2 {
+  /* Custom sizing for this specific step */
+}
+
+#step-2 h2 {
+  /* Custom title size for Step 2 */
+  font-size: clamp(1.8rem, 4.5vw, 3.5rem);
+}
+
+#step-2 .relative.w-80.h-96 {
+  /* Custom video size for Step 2 */
+  width: clamp(240px, 75vw, 300px);
+  height: clamp(290px, 55vh, 380px);
+}
+
+#step-2 p {
+  /* Custom description size for Step 2 */
+  font-size: clamp(0.9rem, 2.8vw, 1.4rem);
+}
+
+/* Step 3: Deepthroat Whores */
+#step-3 {
+  /* Custom sizing for this specific step */
+}
+
+#step-3 h2 {
+  /* Custom title size for Step 3 */
+  font-size: clamp(2.2rem, 5.5vw, 4.5rem);
+}
+
+#step-3 .relative.w-80.h-96 {
+  /* Custom video size for Step 3 */
+  width: clamp(260px, 85vw, 340px);
+  height: clamp(310px, 65vh, 420px);
+}
+
+#step-3 p {
+  /* Custom description size for Step 3 */
+  font-size: clamp(1.1rem, 3.2vw, 1.6rem);
+}
+
+/* Step 4: Anal Gaping */
+#step-4 {
+  /* Custom sizing for this specific step */
+}
+
+#step-4 h2 {
+  /* Custom title size for Step 4 */
+  font-size: clamp(1.9rem, 4.8vw, 3.8rem);
+}
+
+#step-4 .relative.w-80.h-96 {
+  /* Custom video size for Step 4 */
+  width: clamp(230px, 70vw, 280px);
+  height: clamp(280px, 50vh, 360px);
+}
+
+#step-4 p {
+  /* Custom description size for Step 4 */
+  font-size: clamp(0.95rem, 2.9vw, 1.3rem);
+}
+
+/* Mobile specific adjustments */
+@media screen and (max-width: 768px) {
+  /* All steps get mobile-friendly padding */
+  #step-1, #step-2, #step-3, #step-4 {
+    padding: 1rem;
+  }
+  
+  /* Adjust video containers for mobile */
+  #step-1 .relative.w-80.h-96,
+  #step-2 .relative.w-80.h-96,
+  #step-3 .relative.w-80.h-96,
+  #step-4 .relative.w-80.h-96 {
+    width: clamp(200px, 90vw, 300px) !important;
+    height: clamp(250px, 45vh, 350px) !important;
+  }
+  
+  /* Compact text for mobile */
+  #step-1 h2, #step-2 h2, #step-3 h2, #step-4 h2 {
+    font-size: clamp(1.5rem, 6vw, 2.5rem) !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  #step-1 p, #step-2 p, #step-3 p, #step-4 p {
+    font-size: clamp(0.8rem, 4vw, 1.2rem) !important;
+    margin-bottom: 1rem !important;
+  }
+  
+  /* Compact buttons for mobile */
+  #step-1 button, #step-2 button, #step-3 button, #step-4 button {
+    padding: 0.75rem 1.5rem !important;
+    font-size: clamp(0.7rem, 3.5vw, 1rem) !important;
+  }
+}
+
+/* Very small screens (iPhone SE, etc.) */
+@media screen and (max-width: 375px) {
+  #step-1 .relative.w-80.h-96,
+  #step-2 .relative.w-80.h-96,
+  #step-3 .relative.w-80.h-96,
+  #step-4 .relative.w-80.h-96 {
+    width: clamp(180px, 85vw, 250px) !important;
+    height: clamp(220px, 40vh, 300px) !important;
+  }
+  
+  #step-1 h2, #step-2 h2, #step-3 h2, #step-4 h2 {
+    font-size: clamp(1.2rem, 5vw, 2rem) !important;
+  }
+  
+  #step-1 p, #step-2 p, #step-3 p, #step-4 p {
+    font-size: clamp(0.7rem, 3.5vw, 1rem) !important;
+  }
+}
