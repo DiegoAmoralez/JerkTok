@@ -22,7 +22,7 @@ export default function FinalCTA({ addedItemsCount }: FinalCTAProps) {
               animationDelay: '0.3s',
               backgroundImage: 'linear-gradient(to right, var(--jt-purple-light), var(--jt-red))'
             }}>
-          See what&apos;s new, pick up where you left off, and enjoy the feed tuned exactly to your tastes.
+          Your JerkTok.me Feed Is Armed and Ready to Make You CUM!
         </h1>
         
         <div className={`mb-8 ${isVisible ? 'slide-in-left' : 'opacity-0'}`} style={{ animationDelay: '0.6s' }}>
@@ -58,7 +58,7 @@ export default function FinalCTA({ addedItemsCount }: FinalCTAProps) {
           }}
         >
           <span className="flex items-center gap-3">
-            Engage now! 
+          Start Jerking FREE!
            
           </span>
         </a>
