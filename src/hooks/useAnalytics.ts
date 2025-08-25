@@ -25,7 +25,7 @@ export const useAnalytics = () => {
     return typeof window !== 'undefined' && typeof window.gtag === 'function';
   };
 
-  // Отправка события
+  // Отправка события (GA4 формат)
   const trackEvent = ({
     action,
     category,
@@ -39,23 +39,28 @@ export const useAnalytics = () => {
     }
 
     try {
+      // GA4 формат событий
       window.gtag('event', action, {
         event_category: category,
         event_label: label,
         value: value,
+        custom_map: {
+          dimension1: category,
+          dimension2: label,
+        },
         ...custom_parameters,
       });
 
       // Логируем событие в консоль для отладки
-      console.log('Analytics Event:', {
-        action,
-        category,
-        label,
-        value,
+      console.log('🎯 GA4 Event Sent:', {
+        event_name: action,
+        event_category: category,
+        event_label: label,
+        value: value,
         custom_parameters,
       });
     } catch (error) {
-      console.error('Ошибка отправки аналитики:', error);
+      console.error('❌ Ошибка отправки аналитики:', error);
     }
   };
 
@@ -131,6 +136,7 @@ export const useAnalytics = () => {
   };
 
   const trackFinalCTAClick = () => {
+    // Отправляем и как кастомное событие, и как конверсию
     trackEvent({
       action: 'final_cta_click',
       category: 'conversion',
@@ -139,6 +145,15 @@ export const useAnalytics = () => {
         conversion_type: 'main_cta',
       },
     });
+
+    // Дополнительное событие конверсии для GA4
+    if (isGtagAvailable()) {
+      window.gtag('event', 'conversion', {
+        send_to: process.env.NEXT_PUBLIC_GA_ID,
+        value: 1,
+        currency: 'USD',
+      });
+    }
   };
 
   const trackVideoPlay = (videoType: string, stepNumber: number) => {
@@ -151,6 +166,28 @@ export const useAnalytics = () => {
         step: stepNumber,
       },
     });
+
+    // Дополнительное событие engagement для GA4
+    if (isGtagAvailable()) {
+      window.gtag('event', 'engagement', {
+        engagement_time_msec: 3000, // 3 секунды
+        content_type: 'video',
+        content_id: videoType,
+      });
+    }
+  };
+
+  // Отслеживание времени на странице
+  const trackPageEngagement = (timeSpent: number) => {
+    if (isGtagAvailable()) {
+      window.gtag('event', 'page_view_time', {
+        value: timeSpent,
+        event_category: 'engagement',
+        custom_parameters: {
+          time_spent_seconds: timeSpent,
+        },
+      });
+    }
   };
 
   return {
@@ -164,6 +201,7 @@ export const useAnalytics = () => {
     trackProgressComplete,
     trackFinalCTAClick,
     trackVideoPlay,
+    trackPageEngagement,
     isGtagAvailable,
   };
 };

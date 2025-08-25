@@ -21,7 +21,15 @@ export default function GoogleAnalytics({ ga_id }: GoogleAnalyticsProps) {
           gtag('config', '${ga_id}', {
             page_title: document.title,
             page_location: window.location.href,
+            debug_mode: ${process.env.NODE_ENV === 'development'},
+            send_page_view: true,
+            anonymize_ip: true,
+            allow_google_signals: true,
+            allow_ad_personalization_signals: false
           });
+
+          // Отладочное сообщение
+          console.log('🎯 Google Analytics GA4 загружен:', '${ga_id}');
         `}
       </Script>
     </>
