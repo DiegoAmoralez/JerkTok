@@ -6,6 +6,10 @@ interface HeroSectionProps {
 
 export default function HeroSection({ onScrollToStep }: HeroSectionProps) {
   const { ref, isVisible } = useScrollAnimation();
+  
+  const handleScrollStart = () => {
+    onScrollToStep(1);
+  };
 
   return (
     <section 
@@ -65,7 +69,7 @@ export default function HeroSection({ onScrollToStep }: HeroSectionProps) {
 
         </p>
         <button
-          onClick={() => onScrollToStep(1)}
+          onClick={handleScrollStart}
           className={`text-white font-bold py-4 px-8 rounded-full text-xl shadow-lg animate-pulse button-hover-effect transition-all duration-300 hover:scale-105 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
           style={{ 
             background: 'linear-gradient(to right, var(--jt-purple), var(--jt-purple-dark))',

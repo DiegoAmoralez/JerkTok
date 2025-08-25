@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { useSmoothScroll } from '@/hooks/useScrollAnimation';
+import { useAnalytics } from '@/hooks/useAnalytics';
 import HeroSection from './HeroSection';
 import FuckMachineStep from './steps/FuckMachineStep';
 import PublicMasturbationStep from './steps/PublicMasturbationStep';
@@ -23,6 +24,12 @@ interface ProgressStep {
 
 export default function LandingPageContent() {
   const { scrollToStep } = useSmoothScroll();
+  const { 
+    trackScrollToStep, 
+    trackAddToFeed, 
+    trackScrollToNext, 
+    trackProgressComplete 
+  } = useAnalytics();
   
   const [feedItems, setFeedItems] = useState<FeedItem[]>([
     { id: 'fuckmachine', title: 'Fuck Machine Sluts', added: false },
@@ -39,10 +46,13 @@ export default function LandingPageContent() {
   ]);
 
   const handleScrollToStep = (stepNumber: number) => {
+    trackScrollToStep(stepNumber);
     scrollToStep(stepNumber, () => setCurrentStep(stepNumber));
   };
 
   const handleAddToFeed = (itemId: string) => {
+    trackAddToFeed(itemId);
+    
     setFeedItems(prev => 
       prev.map(item => 
         item.id === itemId ? { ...item, added: true } : item
@@ -62,23 +72,26 @@ export default function LandingPageContent() {
   };
 
   const handleScrollToNext = () => {
+    trackScrollToNext(currentStep);
     handleScrollToStep(currentStep + 1);
   };
 
   useEffect(() => {
     if (currentStep === 5) {
       // Start progress bar animations
-      progressSteps.forEach((_, index) => {
+      progressSteps.forEach((step, index) => {
         setTimeout(() => {
           setProgressSteps(prev => 
-            prev.map((step, i) => 
-              i === index ? { ...step, completed: true } : step
+            prev.map((stepItem, i) => 
+              i === index ? { ...stepItem, completed: true } : stepItem
             )
           );
+          // Отслеживаем завершение каждого этапа прогресса
+          trackProgressComplete(step.text);
         }, (index + 1) * 2000);
       });
     }
-  }, [currentStep, progressSteps]);
+  }, [currentStep, progressSteps, trackProgressComplete]);
 
   // Удаляем массив categories, так как теперь используем отдельные компоненты
 

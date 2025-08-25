@@ -1,4 +1,5 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 interface AnalGapingStepProps {
   isAdded: boolean;
@@ -8,6 +9,11 @@ interface AnalGapingStepProps {
 
 export default function AnalGapingStep({ isAdded, onAddToFeed, onScrollToNext }: AnalGapingStepProps) {
   const { ref, isVisible } = useScrollAnimation();
+  const { trackVideoPlay } = useAnalytics();
+
+  const handleVideoPlay = () => {
+    trackVideoPlay('anal_gaping', 4);
+  };
 
   return (
     <section 
@@ -40,6 +46,7 @@ export default function AnalGapingStep({ isAdded, onAddToFeed, onScrollToNext }:
               muted
               loop
               playsInline
+              onPlay={handleVideoPlay}
             >
               <source src="/videos/Step4_1 (1).mp4" type="video/mp4" />
               Your browser does not support the video tag.

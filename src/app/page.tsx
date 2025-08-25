@@ -2,12 +2,20 @@
 
 import { useState } from 'react';
 import LandingPageContent from '@/components/LandingPageContent';
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 export default function JerkTokLanding() {
   const [consentGiven, setConsentGiven] = useState(false);
+  const { trackConsentAccept, trackConsentReject } = useAnalytics();
   
   const handleConsentAccept = () => {
+    trackConsentAccept();
     setConsentGiven(true);
+  };
+
+  const handleConsentReject = () => {
+    trackConsentReject();
+    window.history.back();
   };
 
   // 18+ Consent Overlay
@@ -28,7 +36,7 @@ export default function JerkTokLanding() {
               I AM 18+ - ENTER SITE
             </button>
             <button
-              onClick={() => window.history.back()}
+              onClick={handleConsentReject}
               className="w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-6 rounded-lg transition-colors"
             >
               LEAVE SITE

@@ -1,4 +1,5 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 interface PublicMasturbationStepProps {
   isAdded: boolean;
@@ -8,6 +9,11 @@ interface PublicMasturbationStepProps {
 
 export default function PublicMasturbationStep({ isAdded, onAddToFeed, onScrollToNext }: PublicMasturbationStepProps) {
   const { ref, isVisible } = useScrollAnimation();
+  const { trackVideoPlay } = useAnalytics();
+
+  const handleVideoPlay = () => {
+    trackVideoPlay('public_masturbation', 2);
+  };
 
   return (
     <section 
@@ -40,6 +46,7 @@ export default function PublicMasturbationStep({ isAdded, onAddToFeed, onScrollT
               muted
               loop
               playsInline
+              onPlay={handleVideoPlay}
             >
               <source src="/videos/Step 1_1 (1).mp4" type="video/mp4" />
               Your browser does not support the video tag.

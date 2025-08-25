@@ -1,4 +1,5 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 interface DeepthroatStepProps {
   isAdded: boolean;
@@ -8,6 +9,11 @@ interface DeepthroatStepProps {
 
 export default function DeepthroatStep({ isAdded, onAddToFeed, onScrollToNext }: DeepthroatStepProps) {
   const { ref, isVisible } = useScrollAnimation();
+  const { trackVideoPlay } = useAnalytics();
+
+  const handleVideoPlay = () => {
+    trackVideoPlay('deepthroat', 3);
+  };
 
   return (
     <section 
@@ -40,6 +46,7 @@ export default function DeepthroatStep({ isAdded, onAddToFeed, onScrollToNext }:
               muted
               loop
               playsInline
+              onPlay={handleVideoPlay}
             >
               <source src="/videos/Step3_1 (1).mp4" type="video/mp4" />
               Your browser does not support the video tag.

@@ -1,4 +1,5 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 interface FuckMachineStepProps {
   isAdded: boolean;
@@ -8,6 +9,11 @@ interface FuckMachineStepProps {
 
 export default function FuckMachineStep({ isAdded, onAddToFeed, onScrollToNext }: FuckMachineStepProps) {
   const { ref, isVisible } = useScrollAnimation();
+  const { trackVideoPlay } = useAnalytics();
+
+  const handleVideoPlay = () => {
+    trackVideoPlay('fuck_machine', 1);
+  };
 
   return (
     <section 
@@ -40,6 +46,7 @@ export default function FuckMachineStep({ isAdded, onAddToFeed, onScrollToNext }
               muted
               loop
               playsInline
+              onPlay={handleVideoPlay}
             >
               <source src="/videos/Step 2_1 (1).mp4" type="video/mp4" />
               Your browser does not support the video tag.

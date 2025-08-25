@@ -1,11 +1,19 @@
 import { useScrollAnimation } from '@/hooks/useScrollAnimation';
+import { useAnalytics } from '@/hooks/useAnalytics';
 
 interface FinalCTAProps {
   addedItemsCount: number;
 }
 
-export default function FinalCTA({ addedItemsCount }: FinalCTAProps) {
+export default function FinalCTA({ addedItemsCount: _ }: FinalCTAProps) {
   const { ref, isVisible } = useScrollAnimation();
+  const { trackFinalCTAClick } = useAnalytics();
+
+  const handleFinalClick = () => {
+    trackFinalCTAClick();
+    // Дополнительная логика, если нужна
+  };
+
   return (
     <section 
       ref={ref as React.RefObject<HTMLElement>}
@@ -50,6 +58,7 @@ export default function FinalCTA({ addedItemsCount }: FinalCTAProps) {
           href="https://jerktok.me"
           target="_blank"
           rel="noopener noreferrer"
+          onClick={handleFinalClick}
           className={`inline-block text-white font-bold py-6 px-12 rounded-full text-2xl shadow-2xl animate-pulse button-hover-effect glow-effect transition-all duration-300 hover:scale-110 transform ${isVisible ? 'fade-in-smooth' : 'opacity-0'}`}
           style={{ 
             animationDelay: '0.9s',
